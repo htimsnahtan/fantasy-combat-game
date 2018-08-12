@@ -1,0 +1,193 @@
+class Character:
+    
+    // virtual, base class for Character subclasses
+        
+    protected:
+    
+        int attack; // returns damage attacked
+        int defence; // accepts damageAttacked, calculates damage inflicted, 
+                        //applies that damage to the defender's
+        strength points
+        int armor;
+        int strengthPoints;
+        string characteristicText
+        
+        string specialAbilitiyText
+        virtual attackFunction()=0;
+        virtual defenceFunction()=0
+        
+    public:
+    
+        Character()
+            set attack;
+            set defence;
+            set armor;
+            set StrengthPoints;
+            set specialAbility
+            set specialAbilitiyText = '';
+            set characteristicText = '';
+        int attackFunction();
+            // should return the damage attacked
+        void defenceFunction();
+            // will take the damage attacked, and calculate the actual damage 
+            // inflicted, and apply that damage to the defender’s strength points.
+        
+
+class Vampire : public Character
+
+// has no dependencies on which type of character the attacker is
+
+    private:
+        attack: 1d12
+        defense: 1d6*Charm
+        armor: 1
+        strengthPoints: 18
+        
+    public:
+        Vampire(characteristic) : Character()
+        
+        charm():
+                // must override character defence
+                // can charm opponent into not attacking. for given attack there is a 50%
+                // chance that their opponent does not actually attack them.
+                // note: if vampire's charm ability activates when medusa uses 'glare', vampire charm
+                // trumps Medusa's glare.
+                
+                if randomIntBetween0and2 >= 1
+                    opponent can't attack
+        attackFunction();
+        defenceFunction();
+        
+class Barbarian : Character
+
+// has no dependencies on which type of character the attacker is
+
+    private:
+        attack: 2d6
+        defnese: 2d6
+        armor: 0
+        strengthPoints: 12
+        
+    public:
+        Barbarian()
+        attackFunction();
+        defenceFunction();
+        must inherit character
+        no specialAbilities
+    
+class BlueMen : Character
+
+// has no dependencies on which type of character the attacker is
+// blue men are actually a swarm of small individuals. for every 4 points of damage,
+// they lose one defense die. for example, if they have a strength of 8,
+// they would have 2d6 for defense.
+        
+    private:
+        attack: 2d10
+        defence: 3d6
+        armor: 3
+        strengthPoints: 12*Mob
+    
+    public:
+        attackFunction();
+        defenceFunction();
+        mob();
+        
+class Medusa : Character
+
+// has no dependencies on which type of character the attacker is
+
+    private:
+        attack: 2d6*Glare
+        defence: 1d6
+        armor: 3
+        strengthPoints: 8
+        
+    public:
+        override attackFunction();
+        
+        // if medusa rolls a 12 when attacking then the target instantly gets turned into
+        // stone and medusa wins. if Medusa uses Glare on HarryPotter on his first life, then
+        // HarryPotter comes back to life.
+        
+        defenceFunction();
+        
+class HarryPotter : Character
+
+// has no dependencies on which type of character the attacker is
+
+    private:
+        attack: 2d6
+        defence: 2d6
+        armor: 0
+        strengthPoints: 10/20*Hogwarts
+        
+    public:
+        // accepts damage attacked
+        attackFunction(); 
+        defenceFunction();
+        hogwarts();
+        characteristics()
+        specialAbilities()
+        
+            // if harry potter's strength reaches 0 or below, he immediately recovers
+            // and his total strength becomes 20. if he were to die again, then he's dead.
+            // ex: if medusa uses 'glare' on harryPotter on his first life, harryPotter
+            // comes back to life after using hogwarts
+
+main:
+
+    // init random
+    
+
+gameplay:
+
+    end when each combat between 2 characters ends when (char 1 dies or char 2 dies)
+    1 round
+        2 attacks; 1 for each characteristics
+        damage calculate:
+        Damage = attacker’s roll – defender’s roll – defender’s armor
+        defender's strenght points -= Damage
+        example:
+        A attacks with dice roll of: 8 10, which means it has an attack of 18, and character B defends with dice roll of 5 6, which means it has defense of 11, character B also has an armor of 3. So the actual damage inflicted from A to B is 18 – 11 – 3 = 4.
+        If character B has strength point of 8 during that round, the new strength point would be 8 – 4 = 4, which means next round B will have strength point of 4.
+        If character B has strength point of 3 during that round, the new strength point would be 3 – 4 = -1, which means character B dies.
+
+menu:
+
+    Begining: 
+        display: 5 characters by names
+        prompt user to: select 2 characters to fight
+        each character must be able to fight all 5 others (including itself)
+        for each round display results on screen
+    Middle (displayed Each Attack):
+        attacker type
+        defender type, armor, strength point.
+        attacker's attack dice roll
+        defender's defend die rolltotal 
+            inflected damage calculatedefender's updated strength point amount after subtrackign damage
+    End:
+        Play again
+        Exit Game
+
+constants:
+
+    typesOfMonsters: 5
+    
+test drivers:
+    create character objects which make attack & defence rolls required to show your classes
+    work correctly
+    
+    Menu: 
+    Choose 2 Characters to Battle Battle: 
+    Each Character Attacks and Defends Round:
+    Each round info displayed 
+        1. attacker type
+        2. defender type, armor, strength,
+        3. attack dick roll
+        4. defense dice roll
+        5. total inflected damage
+        6. defender's updated strength after damage subtracted
+    
+    
+    
